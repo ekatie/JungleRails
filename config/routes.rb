@@ -19,8 +19,17 @@ Rails.application.routes.draw do
   end
 
   # Route to About page
-  get '/about', to: 'about#index'
+  resources :about, only: [:index]
 
+  # Route to Signup page
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
+  # Route to Login page
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
