@@ -8,4 +8,11 @@ class Product < ApplicationRecord
   validates :price, presence: true
   validates :quantity, presence: true
   validates :category, presence: true
+  validate :price_must_be_present
+
+  def price_must_be_present
+    if price.blank? || price.zero?
+      errors.add(:price, "can't be blank")
+    end
+  end  
 end
