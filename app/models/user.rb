@@ -1,6 +1,12 @@
 class User < ApplicationRecord
   has_secure_password
 
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :password, presence: true
+  validates :password_confirmation, presence: true
+  validates :password, confirmation: { case_sensitive: true }
+  
   def new
   end
 
@@ -13,6 +19,15 @@ class User < ApplicationRecord
       redirect_to '/signup'
     end
   end
+  
+  def self.authenticate_with_credentials(email, password)
+    user = find_by_email(email.strip.downcase)
+    if user && user.authenticate(password)
+      user
+    else
+      nil
+    end
+  end 
 
   private
 
