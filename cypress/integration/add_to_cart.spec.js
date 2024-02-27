@@ -21,24 +21,3 @@ describe('Home page displays', () => {
   });
 
 });
-
-
-{/* <article>
-  <%= link_to product_path(product) do %>
-    <%= image_tag product.image.thumb.url , alt: product.name %>
-    <h1>
-      <span><%= product.name %></span>
-      <span><%= humanized_money_with_symbol product.price %></span>
-    </h1>
-  <% end%>
-  <div>
-  <% if product.quantity < 1 %>
-  <button class="soldout">Sold Out</button>
-  <% end %>
-    <%= button_to add_item_cart_path(product_id: product.id), class: 'btn'  + (product.quantity < 1 ? ' btn-semi-transparent' : '') ,
-    method: :post do %>
-      <%= fa_icon "shopping-cart", text: 'Add' %> 
-    <% end %>
-   
-  </div>
-</article> */}
